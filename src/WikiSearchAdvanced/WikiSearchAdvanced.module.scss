@@ -1,0 +1,214 @@
+$primary-color: #8C735B;
+
+header {
+    #Logo {
+        width: 4rem;
+        padding: 0.75rem 1rem;
+    }
+}
+
+a {
+    color: $primary-color;
+    text-decoration: none;
+}
+
+main {
+    display: grid;
+    grid-template: max-content min-content 1fr / 1fr;
+    width: 100%;
+    overflow: hidden;
+
+
+    .History {
+        max-width: 40%;
+        margin: 0.25rem auto;
+        display: grid;
+        grid-auto-flow: column;
+        gap: 0.5rem;
+        white-space: nowrap;
+
+        div {
+            text-decoration: underline;
+            color: $primary-color;
+            cursor: pointer;
+        }
+    }
+
+
+    #QwikiSearchContainer {
+        width: 40vw;
+        min-height: 3rem;
+        padding: 0.25rem;
+        box-sizing: border-box;
+        position: relative;
+        margin: 0 auto;
+        transition: all 60ms step-start;
+
+
+        @media screen and (max-width: 1024px) {
+            width: 60vw;
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 90vw;
+        }
+
+        img {
+            position: absolute;
+            width: 1.25rem;
+            right: 1rem;
+            top: 0.85rem;
+        }
+
+        #QwikiSearch {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            bottom: 0.25rem;
+            left: 0.25rem;
+            resize: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            vertical-align: middle;
+            line-height: 125%;
+            padding: 0.5rem;
+            border-color: rgba($color: $primary-color, $alpha: 0.5);
+            outline-color: $primary-color;
+
+            &:hover {
+                box-shadow: 0 1px 2px 2px rgba($color: $primary-color, $alpha: 0.2);
+            }
+        }
+
+        [class="Popover"] {
+            width: 100%;
+
+            [class="popover-content"] {
+                padding: 0.25rem 0.75rem;
+                cursor: pointer;
+            }
+        }
+
+        .Title {
+            display: grid;
+            grid-template: max-content / max-content 1fr;
+        }
+    }
+
+    #QwikiSearchResultContainer {
+        display: grid;
+        grid-template: 1fr / 1fr;
+        width: 80%;
+        margin: 1rem auto;
+        overflow: hidden;
+
+
+        .QwikiSearchResults {
+            display: grid;
+            box-sizing: border-box;
+            align-content: start;
+            gap: 1rem;
+            grid-template: max-content / repeat(5, 1fr);
+            overflow: auto;
+
+            @media screen and (max-width: 1200px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media screen and (max-width: 1024px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media screen and (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media screen and (max-width: 480px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 80%;
+        }
+
+
+        @media screen and (max-width: 480px) {
+            width: 90%;
+        }
+
+        .QwikiSearchResult {
+            display: grid;
+            grid-template: auto max-content 1fr / 1fr;
+            align-items: flex-end;
+            border: 1px solid $primary-color;
+            padding: 1rem;
+            box-sizing: border-box;
+            border-radius: 0.5rem;
+            transition: box-shadow 180ms ease-in-out;
+            white-space: break-spaces;
+            word-break: break-word;
+
+            [data-fetch] {
+                height: 1rem;
+            }
+
+            @keyframes placeHolderAnimation {
+                0% {
+                    background-position: -468px 0
+                }
+
+                100% {
+                    background-position: 468px 0
+                }
+            }
+
+            &.Placeholder {
+                min-width: 15rem;
+                min-height: 15rem;
+
+
+                &:not([data-no-results="true"]) * {
+                    color: transparent;
+                }
+
+                &[data-no-results="true"] {
+                    color: $primary-color;
+                    display: grid;
+                    grid-template: 1fr / 1fr;
+                    align-items: center;
+                    justify-items: center;
+                }
+
+                .Gradient {
+                    animation-duration: 1.8s;
+                    animation-fill-mode: forwards;
+                    animation-iteration-count: infinite;
+                    animation-name: placeHolderAnimation;
+                    animation-timing-function: linear;
+                    background: #f6f7f8;
+                    background: linear-gradient(to right, #fafafa 8%, #f4f4f4 38%, #fafafa 54%);
+                    background-size: 1000px 640px;
+                    position: relative;
+                }
+
+                * {
+                    background: linear-gradient(to right, #fafafa 8%, #f4f4f4 38%, #fafafa 54%);
+                }
+            }
+
+            h4 {
+                margin: 0;
+            }
+
+            &:hover {
+                box-shadow: 0 1px 2px 2px rgba($color: $primary-color, $alpha: 0.2);
+            }
+        }
+    }
+}
+
+[class="searchmatch"] {
+    font-weight: 700;
+    font-size: 0.95rem;
+}

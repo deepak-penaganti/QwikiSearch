@@ -1,0 +1,22 @@
+header {
+    display: grid;
+    grid-template: max-content / repeat(4, max-content);
+    align-items: center;
+
+    nav {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 1rem;
+        margin: 0 2rem;
+
+        a.active {
+            // font-weight: 600;
+            color: gray;
+        }
+    }
+
+    #Logo {
+        width: 4rem;
+        padding: 0.75rem 1rem;
+    }
+}
